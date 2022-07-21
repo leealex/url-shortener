@@ -16,6 +16,7 @@ use yii\db\ActiveRecord;
  * @property string $shortUrl
  * @property string $statsUrl
  * @property Visit[] $visits
+ * @property int $visitsCount
  */
 class Url extends ActiveRecord
 {
@@ -103,5 +104,14 @@ class Url extends ActiveRecord
     public function getVisits(): ActiveQuery
     {
         return $this->hasMany(Visit::class, ['url_id' => 'id']);
+    }
+
+    /**
+     * Total visits amount
+     * @return null
+     */
+    public function getVisitsCount(): ?int
+    {
+        return (int)$this->getVisits()->count();
     }
 }

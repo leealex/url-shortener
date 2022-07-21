@@ -12,6 +12,7 @@ $this->title = 'UrlShortener';
   <div class="jumbotron text-center bg-transparent">
     <h1 class="display-4">Statistics for <?= $model->token ?></h1>
     <p>Token created at <?= date('d.m.y', $model->created_at) ?></p>
+    <p>Total visits <?= $model->visitsCount ?></p>
   </div>
 
   <div class="row justify-content-md-center">
