@@ -5,16 +5,16 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'UrlShortener',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'GKJHGugv76tgjvhgc7x156$%^#',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -42,14 +42,15 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'site/index',
+                'statistics/<token:[0-9a-zA-Z-_]{5}>' => 'site/statistics',
+                '<token:[0-9a-zA-Z-_]{5}>' => 'site/go'
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
